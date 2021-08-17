@@ -40,17 +40,10 @@ function App() {
   const [latitude, setLatitude] = useState(data.latitude);
   const [longitude, setLongitude] = useState(data.longitude);
 
-  if (data.city !== undefined) {
-    console.log(data.longitude, data.longitude, data.city);
-  }
-
   const onSubmit = (city) => {
-    console.log(city);
     sendRequest(
       `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=78839745a89023129881747e0b14fefd`
     );
-    // setLongitude(data[0].lon);
-    // setLatitude(data[0].lat);
   };
 
   if (error) {

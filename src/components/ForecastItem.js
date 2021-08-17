@@ -3,7 +3,7 @@ import React from "react";
 import "./forecastStyles.css";
 
 export const ForecastItem = (props) => {
-  const icon = `./assets/${props.icon}.svg`;
+  const icon = `weatherAppReact/assets/${props.icon}.svg`;
 
   const date = moment(props.date * 1000).format("DD.MM");
 

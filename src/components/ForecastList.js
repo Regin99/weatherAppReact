@@ -7,6 +7,8 @@ export const ForecastList = (props) => {
   const [loading, setLoading] = useState(false);
   const [forecasts, setForecasts] = useState(null);
 
+  const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.lon}&exclude=hourly,minutely&units=metric&appid=78839745a89023129881747e0b14fefd`;
+
   const sendRequest = async (url) => {
     await fetch(url)
       .then((response) => response.json())
@@ -21,7 +23,6 @@ export const ForecastList = (props) => {
         }
       );
   };
-  const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.lon}&exclude=hourly,minutely&units=metric&appid=78839745a89023129881747e0b14fefd`;
 
   useEffect(() => {
     if (props.lat !== undefined && props.lon !== undefined) {
