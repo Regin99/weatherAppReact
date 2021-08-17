@@ -18,3 +18,9 @@
   text-align: center;
   font-size: 100px;
 }
+
+.App__loading {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+}

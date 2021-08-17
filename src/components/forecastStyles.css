@@ -22,3 +22,9 @@
   text-align: center;
   font-size: 100px;
 }
+
+.loading {
+  position: fixed;
+  top: 250px;
+  left: 50;
+}
