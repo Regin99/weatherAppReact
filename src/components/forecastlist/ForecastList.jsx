@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { ForecastItem } from "./ForecastItem.jsx";
+import { ForecastItem } from "../foreactitem/ForecastItem.jsx";
 import "./forecastStyles.css";
-import { Error } from "./error/Error.jsx";
-import { Loading } from "./loading/Loading.jsx";
+import { Error } from "../error/Error.jsx";
+import { Loading } from "../loading/Loading.jsx";
 
 export const ForecastList = (props) => {
   const [error, setError] = useState(null);

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./inputCity.css";
 
 export const InputCity = (props) => {
   const [city, setCity] = useState("");

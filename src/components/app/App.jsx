@@ -1,9 +1,9 @@
 import "./App.css";
-import { InputCity } from "./components/InputCity.jsx";
-import { ForecastList } from "./components/ForecastList.jsx";
+import { InputCity } from "../inputcity/InputCity.jsx";
+import { ForecastList } from "../forecastlist/ForecastList.jsx";
 import React, { useState, useEffect } from "react";
-import { Error } from "./components/error/Error.jsx";
-import { Loading } from "./components/loading/Loading.jsx";
+import { Error } from "../error/Error.jsx";
+import { Loading } from "../loading/Loading.jsx";
 
 function App() {
   const geolocationURL =
@@ -54,7 +54,7 @@ function App() {
   ) : (
     <div className="App">
       <InputCity city={data.city} onSubmit={onSubmit} />
-      <ForecastList lat={latitude} lon={longitude} />
+      <ForecastList lat={latitude} lon={longitude} loaded={loaded} />
     </div>
   );
 }
