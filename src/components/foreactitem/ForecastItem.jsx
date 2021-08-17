@@ -1,6 +1,6 @@
 import moment from "moment";
 import React from "react";
-import "../forecastlist/forecastStyles.css";
+import "../forecastlist/style.css";
 
 export const ForecastItem = (props) => {
   const icon = `weatherAppReact/assets/${props.icon}.svg`;

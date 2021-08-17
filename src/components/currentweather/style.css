@@ -1,0 +1,12 @@
+.current-weather {
+  display: flex;
+}
+
+.current-weather-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px black solid;
+  border-radius: 4px;
+  width: 100px;
+  height: 100px;
+}

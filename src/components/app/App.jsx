@@ -1,9 +1,11 @@
-import "./App.css";
+import "./style.css";
 import { InputCity } from "../inputcity/InputCity.jsx";
 import { ForecastList } from "../forecastlist/ForecastList.jsx";
 import React, { useState, useEffect } from "react";
 import { Error } from "../error/Error.jsx";
 import { Loading } from "../loading/Loading.jsx";
+import { Map } from "../map/Map.jsx";
+// import { CurrentWeather } from "../currentweather/CurrentWeather.jsx";
 
 function App() {
   const geolocationURL =
@@ -54,7 +56,9 @@ function App() {
   ) : (
     <div className="App">
       <InputCity city={data.city} onSubmit={onSubmit} />
-      <ForecastList lat={latitude} lon={longitude} loaded={loaded} />
+      {/* <CurrentWeather data={data} /> */}
+      <ForecastList lat={latitude} lon={longitude} />
+      <Map lat={latitude} lon={longitude} />
     </div>
   );
 }

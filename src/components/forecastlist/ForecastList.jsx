@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ForecastItem } from "../foreactitem/ForecastItem.jsx";
-import "./forecastStyles.css";
+import "./style.css";
 import { Error } from "../error/Error.jsx";
 import { Loading } from "../loading/Loading.jsx";
 
