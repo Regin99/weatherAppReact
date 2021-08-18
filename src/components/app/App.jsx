@@ -22,7 +22,6 @@ function App() {
       .then(
         (data) => {
           setData(data);
-          console.log(data.lon);
           if ((data.lon !== undefined) & (data.lat !== undefined)) {
             setLoaded(true);
           } else if (

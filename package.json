@@ -1,6 +1,6 @@
 {
   "name": "weather-app-react",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "homepage": "http://regin99.github.io/weatherAppReact",
   "dependencies": {
@@ -33,7 +33,9 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "not chrome < 51",
+      "not safari < 10"
     ],
     "development": [
       "last 1 chrome version",
