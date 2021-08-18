@@ -9,6 +9,7 @@ export const InputCity = (props) => {
       onSubmit={(event) => {
         event.preventDefault();
         props.onSubmit(city);
+        props.onLoaded(false);
       }}
     >
       <input

@@ -8,29 +8,32 @@ import { Map } from "../map/Map.jsx";
 // import { CurrentWeather } from "../currentweather/CurrentWeather.jsx";
 
 function App() {
-  const geolocationURL =
-    "https://ipgeolocation.abstractapi.com/v1/?api_key=0114551861ca4ad5b222750b725754a6";
-
+  const [url, setUrl] = useState(
+    "https://ipgeolocation.abstractapi.com/v1/?api_key=0114551861ca4ad5b222750b725754a6"
+  );
   const [error, setError] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [data, setData] = useState([]);
-  const [latitude, setLatitude] = useState(data.latitude);
-  const [longitude, setLongitude] = useState(data.longitude);
+  const [city, setCity] = useState("");
 
-  const sendRequest = (url) => {
+  const getData = (url) => {
     fetch(url)
       .then((response) => response.json())
       .then(
         (data) => {
           setData(data);
-          if (data.longitude && data.latitude) {
-            setLongitude(data.longitude);
-            setLatitude(data.latitude);
-          } else if (data[0].lat && data[0].lon) {
-            setLongitude(data[0].lon);
-            setLatitude(data[0].lat);
+          console.log(data.lon);
+          if ((data.lon !== undefined) & (data.lat !== undefined)) {
+            setLoaded(true);
+          } else if (
+            data.longitude !== undefined &&
+            data.latitude !== undefined
+          ) {
+            setUrl(
+              `https://api.openweathermap.org/data/2.5/onecall?lat=${data.latitude}&lon=${data.longitude}&exclude=hourly,minutely&units=metric&appid=6dececf0197315bf6c4d5d5a89331432`
+            );
+            setCity(data.city);
           }
-          setLoaded(true);
         },
         (error) => {
           setError(error);
@@ -40,13 +43,20 @@ function App() {
   };
 
   useEffect(() => {
-    sendRequest(geolocationURL);
-  }, []);
+    getData(url);
+  }, [url]);
 
   const onSubmit = (city) => {
-    sendRequest(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=78839745a89023129881747e0b14fefd`
-    );
+    setCity(city);
+    fetch(
+      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=6dececf0197315bf6c4d5d5a89331432`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setUrl(
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${data[0].lat}&lon=${data[0].lon}&exclude=hourly,minutely&units=metric&appid=6dececf0197315bf6c4d5d5a89331432`
+        );
+      });
   };
 
   return error ? (
@@ -55,10 +65,16 @@ function App() {
     <Loading className="App__loading" />
   ) : (
     <div className="App">
-      <InputCity city={data.city} onSubmit={onSubmit} />
+      <InputCity
+        city={city}
+        onSubmit={onSubmit}
+        onLoaded={(flag) => {
+          setLoaded(flag);
+        }}
+      />
       {/* <CurrentWeather data={data} /> */}
-      <ForecastList lat={latitude} lon={longitude} />
-      <Map lat={latitude} lon={longitude} />
+      <ForecastList data={data} loaded={loaded} />
+      <Map lat={data.lat} lon={data.lon} />
     </div>
   );
 }
