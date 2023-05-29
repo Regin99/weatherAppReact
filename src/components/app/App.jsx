@@ -9,7 +9,7 @@ import { Map } from "../map/Map.jsx";
 
 function App() {
   const [url, setUrl] = useState(
-    "https://ipgeolocation.abstractapi.com/v1/?api_key=0114551861ca4ad5b222750b725754a6"
+    "https://ipgeolocation.abstractapi.com/v1/?api_key=1e4c1422984d41aaab344eefe3482250"
   );
   const [error, setError] = useState(null);
   const [loaded, setLoaded] = useState(false);
